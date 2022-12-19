@@ -1,0 +1,11 @@
+COMPILE = gcc -O3 -Wall
+
+ALL : poincare
+
+simulation : integrator.c
+	${COMPILE} -DSIMULATION integrator.c -o simulation.exe -lm
+	./simulation.exe
+poincare : integrator.c
+	${COMPILE} -DPOINCARE integrator.c -o poincare.exe -lm
+	./poincare.exe
+

@@ -1,0 +1,62 @@
+set term wxt 0
+set title "n=0"
+set xlabel "r"
+set ylabel "P"
+set print "coeffienti.dat"
+print("#a\t\tb\t\tc\n\n")
+
+f(x)=a*x**2+b*x+c
+fit f(x) 'zero_n0.dat' via a,b,c
+plot 'zero_n0.dat' w linesp pt 7, f(x)
+print ("#n=0")
+print sprintf("%16.10g %16.10g %16.10g\n", a, b, c)
+
+
+set term wxt 1
+set title "n=1"
+set xlabel "r"
+set ylabel "P"
+
+f(x)=a*x**2+b*x+c
+fit f(x) 'zero_n1.dat' via a,b,c
+plot [3.1414:3.1418][:]'zero_n1.dat' t 'P(r)' w linesp pt 7 , f(x) t'y=a*r^2+b*r+c'
+print ("#n=1")
+print sprintf("%16.10g %16.10g %16.10g\n", a, b, c)
+
+
+set term wxt 2
+set title "n=2"
+set xlabel "r"
+set ylabel "P"
+
+f(x)=a*x**2+b*x+c
+fit f(x) 'zero_n2.dat' via a,b,c
+plot 'zero_n2.dat'w linesp pt 7 , f(x) 
+print ("#n=2")
+print sprintf("%16.10g %16.10g %16.10g\n", a, b, c)
+
+
+set term wxt 3
+set title "n=3"
+set xlabel "r"
+set ylabel "P"
+
+f(x)=a*x**2+b*x+c
+fit f(x) 'zero_n3.dat' via a,b,c
+plot 'zero_n3.dat'w linesp pt 7, f(x)
+print ("#n=3")
+print sprintf("%16.10g %16.10g %16.10g\n", a, b, c)
+
+
+set term wxt 4
+set title "n=4"
+set xlabel "r"
+set ylabel "P"
+
+f(x)=a*x**2+b*x+c
+fit f(x) 'zero_n4.dat' via a,b,c
+plot 'zero_n4.dat'w linesp pt 7, f(x)
+print ("#n=4")
+print sprintf("%16.10g %16.10g %16.10g\n", a, b, c)
+
+

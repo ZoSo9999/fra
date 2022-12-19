@@ -1,0 +1,5 @@
+set term wxt 0
+set title "Grafico di P(r) al variare di n"
+set xlabel "r"
+set ylabel "P"
+plot [0:80][:] 'integratore3.dat' u 1:2 t 'n=3' w l , 'integratore4.dat' u 1:2 t 'n=4' w l , 'integratore5.dat' u 1:2 t 'n=5' w l , 'integratore6.dat' u 1:2 t 'n=6' w l , 'integratore7.dat' u 1:2 t 'n=7' w l 

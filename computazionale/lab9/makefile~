@@ -1,0 +1,4 @@
+COMPILE = gcc -O3 -Wall
+
+compileRW : RW.c
+	${COMPILE} RW.c -o RW.exe -lm

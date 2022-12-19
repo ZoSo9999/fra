@@ -1,0 +1,95 @@
+#include<stdio.h>
+#include "rungekuttaII.h"
+
+
+void f(double *arrin, double *arrout, double t, void *param){
+
+  double *n = (double*) param;
+  double temp = arrin[0];
+
+  arrout[0] = arrin[1];
+  arrout[1] = - pow(temp,*n) - 2*arrin[1]/t;
+}
+
+
+void Err( double t, double dt, double x);
+double analitic(double r);
+
+int main (int argc, char *argv []){
+
+  if(argc < 7){
+    printf("Wrong imput:\n n r0 P0 D0 dr rMAX\n");
+    exit(-1);
+  }
+  
+  double n = atof(argv[1]);
+  long double r0 = atof(argv[2]);
+  double phase[DIM] = {atof(argv[3]), atof(argv[4])};
+  long double dr = atof(argv[5]);
+  long double rmax = atof(argv[6]);
+  int counts = rint((rmax-r0) /dr);
+
+  long double r=0;
+
+  #ifdef ZEROANALYSIS
+  n = 0.01 * atof(argv[1]);
+  double temp = phase[0];
+  #endif
+  int EXIT= 0;
+  
+  
+
+  #ifdef SIMULATION
+  printf("#r\t\tP\t\tD");
+  printf("%16.14Lg %16.14g %16.14g\n", r0, phase[0], phase[1]);
+  #endif
+  
+  for(int i=0; i<counts && EXIT!=1; i++){
+    
+    r = r0 + i*dr;
+    rungekuttaII(phase, phase, r, dr, (void*)&n);
+
+    #ifdef ZEROANALYSIS
+    if(phase[0]<=0 && temp>0){
+      long double zero = r + temp * dr / (temp - phase[0]);
+      printf("%16.14g %16.14Lg %16.14Lg\n", n, zero, (2*r+dr)/2);     // PER L'INTERVALLO [0,4]
+      EXIT = 1;
+      /*printf("#n=%g\t\tr\t\tP\n", n);           //DA QUI
+      double temp2 = phase [0];
+      rungekuttaII(phase, phase, r + dr, dr, (void*)&n);
+      printf("%16.14Lg %16.14g\n%16.14Lg %16.14g\n%16.14Lg %16.14g\n", r, temp, r+dr, temp2, r+2*dr, phase[0]); */     //A QUI, PER n=0,1,2,3,4
+    }
+
+    temp = phase[0];
+    #endif
+
+     
+    #ifdef SIMULATION
+    printf("%16.14Lg %16.14g %16.14g\n", r + dr, phase[0], phase[1]);
+    #endif
+  }
+  
+  #ifdef ERRORANALYSIS
+  Err(rmax, dr, phase[0]);
+  #endif
+
+  #ifdef EXTRA
+  printf("%16.14Lg %16.14g\n", dr*dr, phase[0]);
+  #endif
+  
+  return 0;
+}
+
+
+void Err( double t, double dt, double x){
+  double deltax = x - analitic(t);
+  
+  printf("%16.14g %16.14g\n", dt, deltax);
+}
+
+
+double analitic(double r){
+  double x = (cos(r-1) + sin(r-1)) / r;
+  
+  return x;
+}

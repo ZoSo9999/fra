@@ -1,0 +1,20 @@
+ALL : EULERO CROMER CENTRAL eulero cromer central
+
+EULERO : oscillator.c
+	gcc -DEULERO oscillator.c -o oscEulero.exe
+
+CROMER : oscillator.c
+	gcc -DEULEROCROMER oscillator.c -o oscEuleroCromer.exe
+
+CENTRAL : oscillator.c
+	gcc -DCENTRAL oscillator.c -o oscCentral.exe
+
+
+eulero : oscEulero.exe
+	./oscEulero.exe > Eulero.dat
+
+cromer : oscEuleroCromer.exe
+	./oscEuleroCromer.exe > Cromer.dat
+
+central: oscCentral.exe
+	./oscCentral.exe > Central.dat

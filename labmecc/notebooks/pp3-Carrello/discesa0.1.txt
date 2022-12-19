@@ -1,0 +1,2 @@
+Tempo di volo, Can 1 e 2, discesa 0 (2.43 gradi - 0.0426 rad) 2 pesi
+Tempo ( s )	Tempo trascorso ( s )

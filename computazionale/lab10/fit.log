@@ -1,0 +1,112 @@
+
+
+*******************************************************************************
+Fri Dec  9 19:48:02 2022
+
+
+FIT:    data read from 'Rdiffusione.dat' u 2:3
+        format = x:z
+        x range restricted to [0.100000 : 0.900000]
+        #datapoints = 9
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x)=a(1-x)**b+c(1-x)**d
+fitted parameters initialized with current variable values
+
+
+
+*******************************************************************************
+Fri Dec  9 19:48:18 2022
+
+
+FIT:    data read from 'Rdiffusione.dat' u 2:3
+        format = x:z
+        x range restricted to [0.100000 : 0.900000]
+        #datapoints = 9
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x)=a*(1-x)**b+c*(1-x)**d
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c             d            
+   0 9.0470827504e+00   0.00e+00  4.46e-01    1.000000e+00   1.000000e+00   1.000000e+00   1.000000e+00
+  15 3.7074443837e-08  -5.28e-04  4.46e-09    9.906359e-02   2.135320e+00   1.517710e-01   1.015948e+00
+
+After 15 iterations the fit converged.
+final sum of squares of residuals : 3.70744e-08
+rel. change during last iteration : -5.28268e-09
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 8.61097e-05
+variance of residuals (reduced chisquare) = WSSR/ndf   : 7.41489e-09
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 0.0990636        +/- 0.006561     (6.623%)
+b               = 2.13532          +/- 0.061        (2.857%)
+c               = 0.151771         +/- 0.006683     (4.403%)
+d               = 1.01595          +/- 0.01657      (1.631%)
+
+correlation matrix of the fit parameters:
+                a      b      c      d      
+a               1.000 
+b              -0.988  1.000 
+c              -1.000  0.990  1.000 
+d              -0.995  0.971  0.994  1.000 
+
+
+*******************************************************************************
+Sat Dec 10 16:44:25 2022
+
+
+FIT:    data read from 'Rdiffusione.dat' u 2:3
+        format = x:z
+        #datapoints = 9
+        residuals are weighted equally (unit weight)
+
+function used for fitting: D(r)
+	D(r)=a*(1-r)**b+c*(1-r)**d
+fitted parameters initialized with current variable values
+
+
+
+*******************************************************************************
+Sat Dec 10 16:44:40 2022
+
+
+FIT:    data read from 'Rdiffusione.dat' u 2:3
+        format = x:z
+        #datapoints = 9
+        residuals are weighted equally (unit weight)
+
+function used for fitting: D(x)
+	D(x)=a*(1-x)**b+c*(1-x)**d
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c             d            
+   0 9.0476515267e+00   0.00e+00  4.46e-01    1.000000e+00   1.000000e+00   1.000000e+00   1.000000e+00
+  14 1.5098473079e-07  -1.80e-01  4.46e-08    1.123378e-01   2.005624e+00   1.378167e-01   9.838458e-01
+
+After 14 iterations the fit converged.
+final sum of squares of residuals : 1.50985e-07
+rel. change during last iteration : -1.80336e-06
+
+degrees of freedom    (FIT_NDF)                        : 5
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.000173773
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.01969e-08
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 0.112338         +/- 0.01573      (14%)
+b               = 2.00562          +/- 0.1136       (5.665%)
+c               = 0.137817         +/- 0.01597      (11.59%)
+d               = 0.983846         +/- 0.04071      (4.138%)
+
+correlation matrix of the fit parameters:
+                a      b      c      d      
+a               1.000 
+b              -0.990  1.000 
+c              -1.000  0.992  1.000 
+d              -0.996  0.975  0.995  1.000 

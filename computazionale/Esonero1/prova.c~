@@ -1,0 +1,17 @@
+#include<stdio.h>
+
+int main (){
+
+  long double a, b,c,d;
+
+  a=100;
+  b=0.01;
+  c=0.01;
+
+  d=(a-b)/c;
+
+
+  printf("%Lg", c);
+
+  return 0;
+}

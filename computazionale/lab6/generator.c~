@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <time.h>
+#include "random.h"
+
+#define N 1000
+
+int main(int argc, char *argv[]){
+
+  seed = time(0);
+
+  
+  set_minimal_std();
+
+  for(int i=0; i<N ; i++){
+    double a = get_real();
+    printf("%16d %16g\n", i, a);
+  }
+  
+
+
+
+  return 0;
+}

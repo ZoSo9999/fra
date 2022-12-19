@@ -1,0 +1,15 @@
+#!/bin/bash
+
+POINTS=20
+RHO=0.1
+L=80
+STORIES=5000
+STEP=50
+
+
+
+for((i=1; i<=${POINTS}; i++)) ; do
+    let T=${i}*${STEP}
+    ./reticular.exe 0.1 ${L} ${T} ${STORIES} >> dati/diffusioneR1.dat
+done
+

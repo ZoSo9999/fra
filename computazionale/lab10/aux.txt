@@ -1,0 +1,56 @@
+#!/bin/bash
+
+POINTS=50
+RHO=0.1
+L=80
+STORIES=1000
+STEP=20
+
+
+
+for((i=1; i<=${POINTS}; i++)) ; do
+    let T=${i}*${STEP}
+    ./reticular.exe 0.1 ${L} ${T} ${STORIES} >> dati/diffusioneR1.dat
+done
+
+for((i=1; i<=${POINTS}; i++)) ; do
+    let T=${i}*${STEP}
+    ./reticular.exe 0.2 ${L} ${T} ${STORIES} >> dati/diffusioneR2.dat
+done
+
+for((i=1; i<=${POINTS}; i++)) ; do
+    let T=${i}*${STEP}
+    ./reticular.exe 0.3 ${L} ${T} ${STORIES} >> dati/diffusioneR3.dat
+done
+
+
+for((i=1; i<=${POINTS}; i++)) ; do
+    let T=${i}*${STEP}
+    ./reticular.exe 0.4 ${L} ${T} ${STORIES} >> dati/diffusioneR4.dat
+done
+
+for((i=1; i<=${POINTS}; i++)) ; do
+    let T=${i}*${STEP}
+    ./reticular.exe 0.5 ${L} ${T} ${STORIES} >> dati/diffusioneR5.dat
+done
+
+for((i=1; i<=${POINTS}; i++)) ; do
+    let T=${i}*${STEP}
+    ./reticular.exe 0.6 ${L} ${T} ${STORIES} >> dati/diffusioneR6.dat
+done
+
+for((i=1; i<=${POINTS}; i++)) ; do
+    let T=${i}*${STEP}
+    ./reticular.exe 0.7 ${L} ${T} ${STORIES} >> dati/diffusioneR7.dat
+done
+
+for((i=1; i<=${POINTS}; i++)) ; do
+    let T=${i}*${STEP}
+    ./reticular.exe 0.8 ${L} ${T} ${STORIES} >> dati/diffusioneR8.dat
+done
+
+for((i=1; i<=${POINTS}; i++)) ; do
+    let T=${i}*${STEP}
+    ./reticular.exe 0.9 ${L} ${T} ${STORIES} >> dati/diffusioneR9.dat
+done
+

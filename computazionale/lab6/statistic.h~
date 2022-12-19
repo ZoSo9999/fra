@@ -1,0 +1,32 @@
+#include "random.h"
+
+typedef struct {
+  double min;
+  double max;
+  double mean;
+  double sdtdev;
+  //altra roba
+  double *hist;
+} stat;
+
+stat get_statistic(double *dat, int N, int bins){
+
+  double min=0;
+  double max=0;
+  double mean=0;
+  double meanq=0;
+  
+  for(int i=0; i<N; i++){
+    mean += dat[i];
+    meanq += dat[i] * dat[i];
+    max = (max > dat[i]) ? dat[i] : max;
+    min = (min < dat[i]) ? dat[i] : min;
+    
+    
+  }
+
+  mean /= N;
+  double sdtdev = (meanq - mean) / (N-1);
+  meanq /= N;
+  int step = (int) (max - min) / bins
+  

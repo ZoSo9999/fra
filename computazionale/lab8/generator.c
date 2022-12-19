@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include "statistic.h"
+#include "random.h"
+
+
+int main(int argc, char *argv[]){
+
+  if(argc<5){
+    printf("N BINS LGC_METHOD A B \n");
+    printf("1-->MINIMAL STD\t 2-->RANDU\t 3-->MY LCG\n");
+    printf("A B are parameters of the distribution (interval of definition || MU and SIGMA of the normal distribution)\n"); 
+    exit(-1);
+  }
+  
+  int N = atoi(argv[1]);
+  int bins = atoi(argv[2]);
+  int choice = atoi(argv[3]);
+  double a = atof(argv[4]);
+  double b = atof(argv[5]);
+
+  seed = (RANDOM) time(NULL);
+  
+  double *array = (double *) malloc(N*sizeof (double));
+  if(choice == 1)
+    set_minimal_std();
+  else if(choice == 2)
+    set_randu();
+  else if(choice == 3){
+    RANDOM A, B, M;
+    printf("#Insert your LCG values (I'=(B+A*I)percentM):\n");
+    printf("#a: ");
+    scanf("%llu", &A);
+    printf("#b: ");
+    scanf("%llu", &B);
+    printf("#mod: ");
+    scanf("%llu", &M);
+    set_my_LCG(A, B, M);                  
+  }
+    
+#ifdef UNIFORM 
+  for(int i=0; i<N; i++)
+    array[i] = (b-a) * get_real() + a;
+#endif
+
+#ifdef GAUSSIAN
+  for(int i = 0; i<N; i++)
+    array[i] = b * get_normal()  + a;
+#endif
+
+#ifdef RANDU
+  for(int i=0; i<N; i++)
+    array[i] = (b-a) * get_real() + a;
+
+  for(int i=2; i<N; i++)
+  printf("RANDU %16g %16g %16g\n", array[i-2], array[i-1], array[i]);
+  
+  printf("\n\n");
+#endif
+  
+  stat statistic = get_statistic(array, N, bins);
+  print_statistic(statistic);
+  
+  free(statistic.hist);
+  free(array);
+
+
+  //potrei aggiungere il calcolo del tempo di esecuzione
+  
+  return 0;
+ }

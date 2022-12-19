@@ -1,0 +1,44 @@
+COMPILE = gcc -O3 -Wall
+
+n = 3
+r0 = 0.01
+P0 = 1
+D0 = 0
+dr = 0.01
+rmax = 100
+
+ALL : err_analysis err_plot
+
+integratore : integratore.c
+	${COMPILE} integratore.c -o integratore.exe -lm
+
+integexe : integratore.exe
+	./integratore.exe ${n} ${r0} ${P0} ${D0} ${dr} ${rmax} > integratore.dat 
+plot : script.gp
+	gnuplot -p "script.gp"
+
+
+zero_analysis : myintegratore.c
+	${COMPILE} -DZEROANALYSIS myintegratore.c -o zero_analysis.exe -lm
+	./zero_analysis.sh
+n_interi : myintegratore.c zero_analysis.exe
+	${COMPILE} -DZEROANALYSIS myintegratore.c -o zero_analysis.exe -lm
+	./zero_analysis.exe 0 0.001 1 0 0.01 100 > zero_n0.dat
+	./zero_analysis.exe 1 0.001 1 0 0.01 100 > zero_n1.dat
+	./zero_analysis.exe 2 0.001 1 0 0.01 100 > zero_n2.dat
+	./zero_analysis.exe 3 0.001 1 0 0.01 100 > zero_n3.dat
+	./zero_analysis.exe 4 0.001 1 0 0.01 100 > zero_n4.dat
+	gnuplot -p "script_zero.gp"
+
+err_analysis : myintegratore.c
+	${COMPILE} -DERRORANALYSIS myintegratore.c -o err_analysis.exe -lm
+	./err_analysis.sh
+err_plot : script_err.gp
+	gnuplot -persist "script_err.gp"
+
+
+extra : myintegratore.c
+	${COMPILE} -DEXTRA myintegratore.c -o extra.exe -lm
+	./extra.sh
+extra_plot : extra_script.gp
+	gnuplot -p "extra_script.gp"

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+start=-3.1415926535897932384626
+dx=3.1415926535897932384626/10
+x=start
+v=start
+
+rm -f attrazione.dat
+
+./attrazione.exe ${x} ${v} >> attrazione.dat
+
+
+for ((i=0; i<=20; i++)) ; do
+    x+=i*dx
+    for ((j=0; j<=20; j++)) ; do
+	v+=j*dx
+	./attrazione.exe ${x} ${v} >> attrazione.dat
+    done	
+done
